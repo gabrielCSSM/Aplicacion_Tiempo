@@ -9,72 +9,59 @@ import SwiftUI
 
 struct VistaTiempo: View {
     
+    //Variables
+    
+    // Control para mostrar los controles
+    // para añadir una ciudad
+    @State var modalAñadirCiudad = false
+    
+    @State var modalAltura = PresentationDetent.medium
+    
+    
+    // toDo
     @StateObject var tiempo: TiempoDatos = TiempoDatos()
     
-    var body: some View {
-        VStack {
-            //CIUDAD
-            Text("\(tiempo.tiempo?.cidade ?? "Ciudad Desconocida")")
-                .foregroundStyle(Color.white)
-                .font(.title)
-            
-            ForEach(tiempo.tiempo?.tiempo ?? []) {
-                data in
-                //TIEMPO ACTUAL
-                Text("\(data.descricion)")
-                    .foregroundStyle(Color.white)
-                    .font(.title3)
-                HStack{
-                    //TEMPERATURA ACTUAL
-                    AsyncImage(url: URL(string: "http://openweathermap.org/img/wn/\(data.icono)@2x.png"))
-                    Text(obtenerNumero(tiempo.tiempo?.temperatura.temperaturaActual ?? 0))
-                        .foregroundStyle(Color.white)
-                        .font(.title)
-                }
-            }
+    // Array que tiene las
+    // ciudades guardadas por el usuario
+    var arrayTiempo: [String] = []
     
+    var body: some View {
             
-            HStack {
-                //TEMPERATURA MAXIMA
-                Image(systemName: "thermometer.sun.fill")
-                    .symbolRenderingMode(.multicolor)
-                Text(obtenerNumero(tiempo.tiempo?.temperatura.temperaturaMax ?? 0)).foregroundStyle(Color.white)
-                    .font(.title3)
-                
-                //TEMPERATURA MINIMA
-                Image(systemName: "thermometer.snowflake")
-                    .symbolRenderingMode(.multicolor)
-                Text(obtenerNumero(tiempo.tiempo?.temperatura.temperaturaMin ?? 0)).foregroundStyle(Color.white)
-                    .font(.title3)
-            }.padding()
-            
-            
-            HStack {
-                //HUMEDAD
-                Image(systemName: "humidity.fill")
-                    .foregroundStyle(Color.white)
-                Text("\(tiempo.tiempo?.temperatura.humidade ?? 0) %").foregroundStyle(Color.white)
-                    .font(.title3)
-            }.padding()
-            
-            HStack {
-                //PRESION ATMOSFERICA
-                Image(systemName: "hurricane")
-                    .foregroundStyle(Color.white)
-                Text("\(tiempo.tiempo?.temperatura.presion ?? 0)  hPa").foregroundStyle(Color.white)
-                    .font(.title3)
-            }.padding()
-            
-            Spacer()
-            
-        }.onAppear{
-            tiempo.getTiempo()
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
-         .background(LinearGradient(
-            gradient: Gradient(colors: [.blue, .purple]),
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing)
-         )
+        /*
+         Comprueba de que la lista de ciudades este vacia
+         para mostrar el mensaje de abajo
+        */
+        
+        if arrayTiempo.isEmpty {
+            Text("No hay ciudades seleccionadas")
+            Text("Pulse aqui para añadir una:")
+            Button(action: {
+                modalAñadirCiudad = !modalAñadirCiudad
+            }, label: {
+                Text("+")
+            })
+        }
+        
+        /* 
+         Cuando la condicion de mostrar esta modal
+         cambie muestra la modal de abajo
+        */
+        
+        if modalAñadirCiudad {
+            VStack{
+            }.sheet(isPresented: $modalAñadirCiudad,
+            content: {
+                VistaSelector()            .presentationDetents([.medium, .large])
+                    .toolbar(content: {
+                        Button(action: {
+                            modalAñadirCiudad = !modalAñadirCiudad
+                        }, label: {
+                            Text("X")
+                        })
+                    })
+            })
+        }
+        //ACABA AQUI
     }
 }
 
