@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct VistaSelector: View {
     var body: some View {
         VStack {
             
@@ -19,5 +19,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    VistaSelector()
 }
