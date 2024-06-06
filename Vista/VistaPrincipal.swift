@@ -9,76 +9,65 @@ import SwiftUI
 
 struct VistaTiempo: View {
     
-    //Variables
-    
-    // Para controlar la modal para añadir una nueva ciudad
+    // Variables de control de la modal
     @State var modalAñadirCiudad = false
     @State var modalAltura = PresentationDetent.medium
     
-    // toDo timidin
-    @StateObject var tiempo: TiempoDatos = TiempoDatos()
-    
     // Ciudades guardadas
-    @ObservedObject var ciudades: misCiudades = misCiudades()
+    @ObservedObject var ciudades: listaCiudades = listaCiudades()
     
     var body: some View {
-        
-        // Por motivos de pruebas
-        // esto temporalmente esta aqui
-        Button(action: {
-            ciudades.listaCiudades = []
-        }, label: {
-            Text("BORRAR!")
-        }).padding(5)
-          .background(Color.red)
-          .foregroundStyle(Color.white)
-        
-        /*
-         Comprueba de que la lista de ciudades este vacia
-         para mostrar el mensaje de abajo
-        */
+        VStack {
             
-        if ciudades.listaCiudades.isEmpty {
-            
-            Text("No hay ciudades seleccionadas")
-            Text("Pulse aqui para añadir una:")
-            
+            // Por motivos de pruebas
+            // esto temporalmente esta aqui
             Button(action: {
-                modalAñadirCiudad = !modalAñadirCiudad
+                ciudades.listaCiudades = []
             }, label: {
-                Text("+")
-            })
+                Text("BORRAR!")
+            }).padding(5)
+                .background(Color.red)
+                .foregroundStyle(Color.white)
             
-        } else {
-            ForEach(ciudades.listaCiudades, id: \.self) {
-                ciudad in
-                Text(ciudad.nombre + " / " + ciudad.municipio)
+            /*
+             Comprueba de que la lista de ciudades este vacia
+             para mostrar el mensaje de abajo
+             */
+            
+            if ciudades.listaCiudades.isEmpty {
+                
+                vistaVacia(añadirCiudad: $modalAñadirCiudad)
+                
+            } else {
+                vistaConDatos(listaCiudades: ciudades.listaCiudades)
             }
             
-        }
-        
-        /* 
-         Cuando la condicion de mostrar esta modal
-         cambie muestra la modal de abajo
-        */
-        
-        if modalAñadirCiudad {
+            /*
+             Cuando la condicion de mostrar esta modal
+             cambie muestra la modal de abajo
+             */
             
-            VStack{}.sheet(
-                isPresented: $modalAñadirCiudad,
-                content: {
-                    modalSelectorCiudad(
+            if modalAñadirCiudad {
+                VStack{
+                   
+                }.sheet(isPresented: $modalAñadirCiudad, content: {
+                    vistaSeleccionarCiudad(
                         mostrarModal: $modalAñadirCiudad,
-                        lista: ciudades)    .presentationDetents([.medium, .large])
+                        lista: ciudades).presentationDetents([.medium, .large])
                 })
+            }
             
+        }.frame(maxWidth: .infinity, maxHeight:.infinity).background(Color.gray).onAppear(
+            perform: {
+           llamarAPI()
+        })
+        
         }//ACABA AQUI
-    }
 }
 
-struct modalSelectorCiudad: View {
+struct vistaSeleccionarCiudad: View {
     @Binding var mostrarModal: Bool
-    @State var lista: misCiudades
+    @State var lista: listaCiudades
     @State var nombreProvincia: String = ""
     @State var nombreCiudad: String = ""
     
@@ -98,11 +87,36 @@ struct modalSelectorCiudad: View {
             } label: {
                 Text("Guardar")
             }
-
-        }
-        .padding()
+            
+        }.frame(maxWidth: .infinity, maxHeight:.infinity).background(Color.indigo)
     }
 }
+
+struct vistaVacia: View {
+    @Binding var añadirCiudad: Bool
+    var body: some View {
+        Text("No hay ciudades seleccionadas")
+        Text("Pulse aqui para añadir una:")
+        
+        Button(action: {
+            añadirCiudad = !añadirCiudad
+        }, label: {
+            Text("+")
+        })
+    }
+}
+
+struct vistaConDatos: View {
+    var listaCiudades: [ciudad] = []
+    var body: some View {
+        ForEach(listaCiudades, id: \.self) {
+            ciudad in
+            Text(ciudad.nombreCiudad + " / " + ciudad.nombreMunicipio)
+        }
+    }
+}
+
+
 
 
 #Preview {
