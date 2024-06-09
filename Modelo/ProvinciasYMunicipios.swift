@@ -8,29 +8,28 @@
 import Foundation
 
 
-struct ciudad: Hashable {
-    var nombreCiudad: String
-    var nombreMunicipio: String
+
+struct Ciudad: Hashable {
+    let ciudad: String
+    let provincia: String
     var coordLat: Double = 0.0
     var coordLong: Double = 0.0
+    var horasCiudad: [String] = []
+    var tempsCiudad: [Float] = []
 }
 
-
-func printTiempo(tiempos: [Float]) {
-    for tiempo in tiempos {
-        print(tiempo)
-    }
-}
 
 class listaCiudades: ObservableObject {
     
-    @Published var listaCiudades: [ciudad] = []
+    @Published var listaCiudades: [Ciudad] = []
     
     init() {
         //
     }
     
-    func añadirCiudad(provincia: String, municipio: String) {
-        listaCiudades.append(ciudad(nombreCiudad: provincia, nombreMunicipio: municipio))
+    func añadirCiudad(nombreCiudad: String, nombreProvincia: String) {
+        let nuevaCiudad: Ciudad = Ciudad(ciudad: nombreCiudad, provincia: nombreProvincia)
+        listaCiudades.append(nuevaCiudad)
     }
 }
+
