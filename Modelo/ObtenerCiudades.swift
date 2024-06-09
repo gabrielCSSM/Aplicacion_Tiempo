@@ -12,38 +12,57 @@
  */
 
 import Foundation
-import SwiftSoup
 import SwiftUI
 
-func obtenerCiudades() -> [ciudad] {
+func obtenerCiudades() -> [Ciudad] {
         
-    var ejemploCiudad1 = ciudad(nombreCiudad: "Maceda", 
-                                nombreMunicipio: "Ourense",
+    let ejemploCiudad1 = Ciudad(ciudad: "Maceda",
+                                provincia: "Ourense",
                                 coordLat: 42.27217, 
                                 coordLong: -7.650074)
     
-    var ejemploCiudad2 = ciudad(nombreCiudad: "Ourense",
-                                nombreMunicipio: "Ourense",
+    let ejemploCiudad2 = Ciudad(ciudad: "Ourense",
+                                provincia: "Ourense",
                                 coordLat: 42.34001,
                                 coordLong: -7.864641)
     
-    var ejemploCiudad3 = ciudad(nombreCiudad: "Madrid",
-                                nombreMunicipio: "Madrid",
+    let ejemploCiudad3 = Ciudad(ciudad: "Madrid",
+                                provincia: "Madrid",
                                 coordLat: 40.41669,
                                 coordLong: -3.700346)
     
-    var ejemploCiudad4 = ciudad(nombreCiudad: "Barcelona",
-                                nombreMunicipio: "Barcelona",
+    let ejemploCiudad4 = Ciudad(ciudad: "Barcelona",
+                                provincia: "Barcelona",
                                 coordLat: 41.38792,
                                 coordLong: 2.169919)
     
-    var ejemploCiudad5 = ciudad(nombreCiudad: "Murcia",
-                                nombreMunicipio: "Murcia",
+    let ejemploCiudad5 = Ciudad(ciudad: "Murcia",
+                                provincia: "Murcia",
                                 coordLat: 37.98344,
                                 coordLong: -1.12989 )
     
-    var arrayCiudades: [ciudad] = [ejemploCiudad1, ejemploCiudad2, ejemploCiudad3, ejemploCiudad4, ejemploCiudad5 ]
+    let arrayCiudades: [Ciudad] = [ejemploCiudad1, ejemploCiudad2, ejemploCiudad3, ejemploCiudad4, ejemploCiudad5 ]
     
     return arrayCiudades
 }
 
+func devolverProvincias() -> [String] {
+    var arrayMunicipios: [String] = []
+    for ciudade in obtenerCiudades() {
+        if (!arrayMunicipios.contains(ciudade.provincia)) {
+            arrayMunicipios.append(ciudade.provincia)
+        }
+    }
+    
+    return arrayMunicipios
+}
+
+func devolverCiudades(provincia: String) -> [String] {
+    var arrayCiudades: [String] = []
+    for ciudade in obtenerCiudades() {
+        if(ciudade.provincia.elementsEqual(provincia)){
+            arrayCiudades.append(ciudade.ciudad)
+        }
+    }
+    return arrayCiudades
+}
