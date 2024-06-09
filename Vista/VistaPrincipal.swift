@@ -14,15 +14,17 @@ struct VistaTiempo: View {
     @State var modalAltura = PresentationDetent.medium
     
     // Ciudades guardadas
-    @ObservedObject var ciudades: listaCiudades = listaCiudades()
+    @ObservedObject var misCiudades: listaCiudades = listaCiudades()
+    
+    
     
     var body: some View {
+        
         VStack {
-            
             // Por motivos de pruebas
             // esto temporalmente esta aqui
             Button(action: {
-                ciudades.listaCiudades = []
+                misCiudades.listaCiudades = []
             }, label: {
                 Text("BORRAR!")
             }).padding(5)
@@ -34,12 +36,12 @@ struct VistaTiempo: View {
              para mostrar el mensaje de abajo
              */
             
-            if ciudades.listaCiudades.isEmpty {
+            if misCiudades.listaCiudades.isEmpty {
                 
                 vistaVacia(añadirCiudad: $modalAñadirCiudad)
                 
             } else {
-                vistaConDatos(listaCiudades: ciudades.listaCiudades)
+                vistaConDatos(mostrarModal: $modalAñadirCiudad, listaCiudades: misCiudades)
             }
             
             /*
@@ -49,48 +51,76 @@ struct VistaTiempo: View {
             
             if modalAñadirCiudad {
                 VStack{
-                   
+                    
                 }.sheet(isPresented: $modalAñadirCiudad, content: {
                     vistaSeleccionarCiudad(
                         mostrarModal: $modalAñadirCiudad,
-                        lista: ciudades).presentationDetents([.medium, .large])
+                        listaGuardados: misCiudades).presentationDetents([.medium, .large])
                 })
             }
             
         }.frame(maxWidth: .infinity, maxHeight:.infinity).background(Color.gray).onAppear(
             perform: {
-           llamarAPI()
-        })
+                //obtenerDatosCiudades()
+            })
         
-        }//ACABA AQUI
+    }//ACABA AQUI
 }
 
 struct vistaSeleccionarCiudad: View {
     @Binding var mostrarModal: Bool
-    @State var lista: listaCiudades
-    @State var nombreProvincia: String = ""
-    @State var nombreCiudad: String = ""
+    @State var listaGuardados: listaCiudades
+    
+    var listaProvincias: [String] = devolverProvincias()
+    @State var provinciaEscogida: String = "Sin escoger"
+    
+    @State var mostrarSegundoSelector: Bool = false
+    
+    @State var listaCiudades: [String] = []
+    @State var ciudadEscogida: String = "Sin escoger"
+    
     
     var body: some View {
         
         VStack {
-            
-            Text("Introduce el nombre de la provincia:")
-            TextField("Hola", text: $nombreProvincia)
-            
-            Text("Introduce el nombre de la municipio")
-            TextField("Hola", text: $nombreCiudad)
+            HStack {
+                
+                Picker("pickerMunicipios", selection: $provinciaEscogida) {
+                    
+                    Text("Escoger un Municipio")
+                    
+                    ForEach(listaProvincias, id: \.self) {
+                        provincia in
+                        Text(provincia).tag(provincia)
+                        
+                    }
+                }.onChange(of: provinciaEscogida) {
+                    mostrarSegundoSelector = true
+                    listaCiudades = devolverCiudades(provincia: provinciaEscogida)
+                }.pickerStyle(.menu)
+                
+                
+                if(mostrarSegundoSelector) {
+                    Picker("pickerCiudades", selection: $ciudadEscogida) {
+                        Text("Escoger una Ciudad")
+                        ForEach(listaCiudades, id: \.self) { ciudad in
+                            Text(ciudad).tag(ciudad)
+                        }
+                    }
+                }
+            }
             
             Button {
-                lista.añadirCiudad(provincia: nombreProvincia, municipio: nombreCiudad)
+                listaGuardados.añadirCiudad(nombreCiudad: ciudadEscogida, nombreProvincia: provinciaEscogida)
                 self.mostrarModal.toggle()
             } label: {
                 Text("Guardar")
             }
             
-        }.frame(maxWidth: .infinity, maxHeight:.infinity).background(Color.indigo)
+        }.frame(maxWidth: .infinity, maxHeight:.infinity).background(Color.green)
     }
 }
+
 
 struct vistaVacia: View {
     @Binding var añadirCiudad: Bool
@@ -106,17 +136,34 @@ struct vistaVacia: View {
     }
 }
 
+
 struct vistaConDatos: View {
-    var listaCiudades: [ciudad] = []
+    @Binding var mostrarModal: Bool
+    @State var listaCiudades: listaCiudades
+    
     var body: some View {
-        ForEach(listaCiudades, id: \.self) {
+        ForEach(listaCiudades.listaCiudades, id: \.self) {
             ciudad in
-            Text(ciudad.nombreCiudad + " / " + ciudad.nombreMunicipio)
+            Text(ciudad.ciudad + " / " + ciudad.provincia)
         }
+        
+        Button(action: {
+            mostrarModal = !mostrarModal
+        }, label: {
+            Text("+")
+        })
+    
+        
+        if mostrarModal {
+            VStack{
+                
+            }.sheet(isPresented: $mostrarModal, content: {
+                vistaSeleccionarCiudad(mostrarModal: $mostrarModal, listaGuardados: listaCiudades).presentationDetents([.medium, .large])
+            })
+        }
+        
     }
 }
-
-
 
 
 #Preview {
