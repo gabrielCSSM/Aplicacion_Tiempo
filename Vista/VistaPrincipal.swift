@@ -55,7 +55,7 @@ struct VistaTiempo: View {
                 }.sheet(isPresented: $modalAñadirCiudad, content: {
                     vistaSeleccionarCiudad(
                         mostrarModal: $modalAñadirCiudad,
-                        listaGuardados: misCiudades).presentationDetents([.medium, .large])
+                        listaGuardados: misCiudades).presentationDetents([.fraction(0.3)])
                 })
             }
             
@@ -142,26 +142,35 @@ struct vistaConDatos: View {
     @State var listaCiudades: listaCiudades
     
     var body: some View {
-        ForEach(listaCiudades.listaCiudades, id: \.self) {
-            ciudad in
-            Text(ciudad.ciudad + " / " + ciudad.provincia)
-        }
+        GeometryReader { geometry in
+            NavigationView{
+                List {
+                    ForEach(listaCiudades.listaCiudades, id: \.self) {
+                        ciudad in
+                        NavigationLink(ciudad.ciudad + " / " + ciudad.provincia, destination: {
+                            VistaCiudad(ciudadEscogida: ciudad)
+                        })
+                    }
+                }
+            }.frame(width: geometry.size.width * 0.90, height:geometry.size.height * 0.95)
+        }.frame(alignment: .center)
+        
         
         Button(action: {
             mostrarModal = !mostrarModal
         }, label: {
             Text("+")
         })
-    
+        
         
         if mostrarModal {
+            
             VStack{
                 
-            }.sheet(isPresented: $mostrarModal, content: {
-                vistaSeleccionarCiudad(mostrarModal: $mostrarModal, listaGuardados: listaCiudades).presentationDetents([.medium, .large])
-            })
+            }.sheet(isPresented: $mostrarModal) {
+                vistaSeleccionarCiudad(mostrarModal: $mostrarModal, listaGuardados: listaCiudades).presentationDetents([.fraction(0.3)])
+            }
         }
-        
     }
 }
 
