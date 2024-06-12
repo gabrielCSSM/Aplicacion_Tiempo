@@ -16,25 +16,39 @@ import Foundation
 
 /// Make sure the URL contains `&format=flatbuffers`
 
-
-
-
-func obtenerDatosCiudades() {
-    for cadaCiudad in obtenerCiudades() {
-        print(cadaCiudad)
-        print("\n")
+func obtenerDatosCiudad(miCiudad: Ciudad) async throws -> ([String], [Float], [Float]) {
+    let esperarDatos = Task { () -> ([String], [Float], [Float]) in
         
-        Task {
-            let myfunc = await llamarAPI(latitude: cadaCiudad.coordLat, longitude: cadaCiudad.coordLong)
-            print(myfunc)
-            print("\n")
+        let myfunc = await llamarAPI(latitude: miCiudad.coordLat, longitude: miCiudad.coordLong)
+        
+        var tempArrayHoras: [String] =  []
+        var tempArrayTemps: [Float] =  []
+        var tempArrayTiempo: [Float] =  []
+        
+        for dato in myfunc {
+            tempArrayHoras.append(String(dato.split(separator: ";")[0]))
+            tempArrayTemps.append(Float(dato.split(separator: ";")[1]) ?? 0.0)
+            tempArrayTiempo.append(Float(dato.split(separator: ";")[2]) ?? 0.0)
         }
+        
+        return (tempArrayHoras, tempArrayTemps, tempArrayTiempo)
     }
+    
+    
+    let datosRecibidos = await esperarDatos.result
+    
+    do {
+        return try datosRecibidos.get()
+    } catch {
+        print("Something Happened")
+        return([],[],[])
+    }
+    
 }
 
 func llamarAPI(latitude: Double, longitude: Double) async -> [String] {
     
-    let url = URL(string:"https://api.open-meteo.com/v1/forecast?latitude=\(latitude)&longitude=\(longitude)&hourly=temperature_2m&format=flatbuffers")!
+    let url = URL(string:"https://api.open-meteo.com/v1/forecast?latitude=\(latitude)&longitude=\(longitude)&hourly=temperature_2m,weather_code&forecast_days=14&format=flatbuffers")!
     
     do {
         
@@ -57,6 +71,7 @@ func llamarAPI(latitude: Double, longitude: Double) async -> [String] {
             struct Hourly {
                 let time: [Date]
                 let temperature2m: [Float]
+                let weatherCode: [Float]
             }
         }
         
@@ -64,7 +79,8 @@ func llamarAPI(latitude: Double, longitude: Double) async -> [String] {
         let data = WeatherData(
             hourly: .init(
                 time: hourly.getDateTime(offset: utcOffsetSeconds),
-                temperature2m: hourly.variables(at: 0)!.values
+                temperature2m: hourly.variables(at: 0)!.values,
+                weatherCode: hourly.variables(at: 1)!.values
             )
         )
         
@@ -78,7 +94,7 @@ func llamarAPI(latitude: Double, longitude: Double) async -> [String] {
         
         var tempArray: [String] = []
         for (i, date) in data.hourly.time.enumerated() {
-            var mystring = ("\(dateFormatter.string(from: date));\(data.hourly.temperature2m[i])")
+            var mystring = ("\(dateFormatter.string(from: date));\(data.hourly.temperature2m[i]);\(data.hourly.weatherCode[i])")
             tempArray.append(mystring)
         }
         
