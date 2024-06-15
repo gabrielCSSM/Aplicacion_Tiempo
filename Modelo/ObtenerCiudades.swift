@@ -41,7 +41,7 @@ func obtenerCiudades() -> [Ciudad] {
                                 coordLat: 37.98344,
                                 coordLong: -1.12989 )
     
-    let arrayCiudades: [Ciudad] = [ejemploCiudad1, ejemploCiudad2, ejemploCiudad3, ejemploCiudad4, ejemploCiudad5 ]
+    let arrayCiudades: [Ciudad] = [ejemploCiudad1, ejemploCiudad2, ejemploCiudad3, ejemploCiudad4, ejemploCiudad5]
     
     return arrayCiudades
 }
