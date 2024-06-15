@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct Ciudad: Hashable {
+struct Ciudad: Hashable, Codable {
     
     let ciudad: String
     let provincia: String
@@ -91,7 +91,7 @@ class CiudadModel: ObservableObject {
 
 class listaCiudades: ObservableObject {
     
-    @Published var listaCiudades: [Ciudad] = []
+     @Published var listaCiudades: [Ciudad] = []
     
     init() {
         //
@@ -106,4 +106,3 @@ class listaCiudades: ObservableObject {
         }
     }
 }
-
