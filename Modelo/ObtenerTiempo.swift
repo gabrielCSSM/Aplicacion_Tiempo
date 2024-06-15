@@ -13,6 +13,7 @@
 
 import OpenMeteoSdk
 import Foundation
+import SwiftUI
 
 /// Make sure the URL contains `&format=flatbuffers`
 
@@ -94,7 +95,7 @@ func llamarAPI(latitude: Double, longitude: Double) async -> [String] {
         
         var tempArray: [String] = []
         for (i, date) in data.hourly.time.enumerated() {
-            var mystring = ("\(dateFormatter.string(from: date));\(data.hourly.temperature2m[i]);\(data.hourly.weatherCode[i])")
+            let mystring = ("\(dateFormatter.string(from: date));\(data.hourly.temperature2m[i]);\(data.hourly.weatherCode[i])")
             tempArray.append(mystring)
         }
         
@@ -102,5 +103,45 @@ func llamarAPI(latitude: Double, longitude: Double) async -> [String] {
         
     }catch {
         fatalError()
+    }
+}
+
+func obtenerIconoTiempo(codigo: Float) -> Image {
+    switch codigo {
+        case 0:
+            // Despejado
+            return Image.init(systemName: "sun.max.fill")
+        case 1,2,3:
+            // Casi Despejado
+            return Image.init(systemName: "cloud.sun.fill")
+        case 45,48:
+            // Con niebla
+            return Image.init(systemName: "cloud.fog.fill")
+        case 51,53,55:
+            // Con llovizna
+            return Image.init(systemName: "cloud.drizzle.fill")
+        case 56,57:
+            // Llovizan con granizo
+            return Image.init(systemName: "cloud.hail")
+        case 61,63,65:
+            // Lluvia
+            return Image.init(systemName: "cloud.rain.fill")
+        case 66,67:
+            // LLuvia y Granizo
+            return Image.init(systemName: "cloud.sleet")
+        case 71,73,75:
+            // Nieve
+            return Image.init(systemName: "cloud.snow.fill")
+        case 77:
+            // Nevada
+            return Image.init(systemName: "wind.snow")
+        case 80,81,82:
+            // LLuvias intensas
+            return Image.init(systemName: "cloud.rain.fill")
+        case 85,86:
+            // Nieve intensa
+            return Image.init(systemName: "cloud.snow.fill")
+        default:
+            return Image.init(systemName: "cloud.fill")
     }
 }
