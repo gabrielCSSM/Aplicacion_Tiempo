@@ -8,7 +8,7 @@
 import Foundation
 
 // Clase la cual nos permite almacenar y hacer persistir los datos
-class PersistenciaDatos {
+class PersistenciaDatos: NSObject {
     
     static func GuardarDatos(listado: [Ciudad]) -> Data {
         
