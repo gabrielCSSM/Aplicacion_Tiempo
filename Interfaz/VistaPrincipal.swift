@@ -19,6 +19,8 @@ struct VistaPrincipal: View {
     // Variables de control de la Ciudades
     @ObservedObject var ciudades: ListadoCiudades = ListadoCiudades()
     @AppStorage("guardados") var guardados: Data = Data()
+    @AppStorage("tema") var temaApp: Bool = false
+    
     @State var eliminarCiudad = false
     
     var body: some View {
@@ -63,8 +65,9 @@ struct VistaPrincipal: View {
                     
                     // Botones (Presentacion)
                     Button(action: {
-                        
+
                         modoPresentacion = !modoPresentacion
+                        temaApp = modoPresentacion
                         
                     }, label: {
                         
@@ -176,6 +179,8 @@ struct VistaPrincipal: View {
             if(!PersistenciaDatos.DevolverDatos(datos: guardados).isEmpty) {
                 ciudades.listaCiudades = PersistenciaDatos.DevolverDatos(datos: guardados)
             }
+            
+            modoPresentacion = temaApp
         }
     }
 }
