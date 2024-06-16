@@ -25,7 +25,7 @@ struct VistaSeleccionarCiudad: View {
     
     @State var errorEnProvincia = false
     @State var errorEnCiudad = false
-    @State var guardados: Data
+    @AppStorage("guardados") var guardados: Data = Data()
     
     
     var body: some View {
