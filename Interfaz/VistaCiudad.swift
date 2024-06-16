@@ -12,6 +12,7 @@ struct VistaCiudad: View {
     var ciudadEscogida: Ciudad
     @StateObject var modeloCiudad = ModeloCiudad()
     @State var listaHoras: [TiempoHora] = []
+    @State var fechaSeleccionada: String = ""
     
     // Variables de control de la interfaz
     @Binding var modoPresentacion: Bool
@@ -38,15 +39,23 @@ struct VistaCiudad: View {
                     .frame(alignment: .trailing)
                 
                 // Titulo de la Ciudad
-                Text(ciudadEscogida.ciudad + ", " + ciudadEscogida.provincia)
-                    .font(.title2.bold())
-                    .foregroundColor(modoPresentacion ? modoOscuro.colorLetra : modoClaro.colorLetra)
-                    .frame(height: 60)
-                    .shadow(color: modoPresentacion ? modoOscuro.colorSombra : modoClaro.colorSombra, radius: 10)
+                VStack {
+                    Text(ciudadEscogida.ciudad + ", " + ciudadEscogida.provincia)
+                        .font(.title2.bold())
+                        .foregroundColor(modoPresentacion ? modoOscuro.colorLetra : modoClaro.colorLetra)
+                        .frame(height: 60)
+                        .shadow(color: modoPresentacion ? modoOscuro.colorSombra : modoClaro.colorSombra, radius: 10)
+                    Text(fechaSeleccionada)
+                        .font(.headline.bold())
+                        .foregroundColor(modoPresentacion ? modoOscuro.colorLetra : modoClaro.colorLetra)
+                        .frame(height: 7)
+                        .shadow(color: modoPresentacion ? modoOscuro.colorSombra : modoClaro.colorSombra, radius: 10)
+                }
+                
             }
             
             HStack {
-                mostrarDias(modeloCiudad: modeloCiudad, listadoHoras: $listaHoras, modoPresentacion: $modoPresentacion)
+                mostrarDias(modeloCiudad: modeloCiudad, listadoHoras: $listaHoras, modoPresentacion: $modoPresentacion, fechaSeleccionada: $fechaSeleccionada)
                 mostrarHoras(listaHoras: $listaHoras, modoPresentacion: $modoPresentacion)
             }
             
@@ -63,6 +72,7 @@ struct VistaCiudad: View {
                     modeloCiudad.cargarDiario()
                     
                     listaHoras = modeloCiudad.meteorologiaDiaria[0].horas
+                    fechaSeleccionada = modeloCiudad.meteorologiaDiaria[0].dia.replacingOccurrences(of: "_", with: "/")
                     
                 } catch {
                     fatalError("Ocurrio algo intentando cargar los Datos")
@@ -86,6 +96,7 @@ struct mostrarDias: View {
     @StateObject var modeloCiudad: ModeloCiudad
     @Binding var listadoHoras: [TiempoHora]
     @Binding var modoPresentacion: Bool
+    @Binding var fechaSeleccionada: String
     
     var body: some View {
         
@@ -101,6 +112,7 @@ struct mostrarDias: View {
                 Button(action: {
                     
                     listadoHoras = diarioCiudad.horas
+                    fechaSeleccionada = diarioCiudad.dia.replacingOccurrences(of: "_", with: "/")
                     
                 }, label: {
                     
