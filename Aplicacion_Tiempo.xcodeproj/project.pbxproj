@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C001913B2BD579D2008662E6 /* TiempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C001913A2BD579D2008662E6 /* TiempoApp.swift */; };
+		C001913F2BD579D7008662E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C001913E2BD579D7008662E6 /* Assets.xcassets */; };
+		C00191422BD579D7008662E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C00191412BD579D7008662E6 /* Preview Assets.xcassets */; };
+		C017DBBE2BD57ED800C15E97 /* VistaPrincipal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C017DBBD2BD57ED800C15E97 /* VistaPrincipal.swift */; };
+		C017DBC02BD57FD300C15E97 /* ModeloTiempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C017DBBF2BD57FD300C15E97 /* ModeloTiempo.swift */; };
+		C017DBC72BD588DE00C15E97 /* VistaCiudad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C017DBC62BD588DE00C15E97 /* VistaCiudad.swift */; };
+		C02EBB0C2C1BA31C00E80ABD /* PersistenciaDatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02EBB0B2C1BA31C00E80ABD /* PersistenciaDatos.swift */; };
+		C03F95192C1D0B3A003E84DF /* VistaConDatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F95182C1D0B3A003E84DF /* VistaConDatos.swift */; };
+		C03F951B2C1D0B82003E84DF /* VistaSeleccionarCiudad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F951A2C1D0B82003E84DF /* VistaSeleccionarCiudad.swift */; };
+		C03F951D2C1D0BF8003E84DF /* VistaVacia.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F951C2C1D0BF8003E84DF /* VistaVacia.swift */; };
+		C09F6D772BF922EB00AD4D50 /* ModeloCiudad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F6D762BF922EB00AD4D50 /* ModeloCiudad.swift */; };
+		C0B564202C1B715800524A7B /* Colores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5641F2C1B715800524A7B /* Colores.swift */; };
+		C0E702CB2BFE758A003D25E5 /* OpenMeteoSdk in Frameworks */ = {isa = PBXBuildFile; productRef = C0E702CA2BFE758A003D25E5 /* OpenMeteoSdk */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C00191372BD579D2008662E6 /* Aplicacion_Tiempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aplicacion_Tiempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C001913A2BD579D2008662E6 /* TiempoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiempoApp.swift; sourceTree = "<group>"; };
+		C001913E2BD579D7008662E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C00191412BD579D7008662E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C017DBBD2BD57ED800C15E97 /* VistaPrincipal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaPrincipal.swift; sourceTree = "<group>"; };
+		C017DBBF2BD57FD300C15E97 /* ModeloTiempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloTiempo.swift; sourceTree = "<group>"; };
+		C017DBC62BD588DE00C15E97 /* VistaCiudad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaCiudad.swift; sourceTree = "<group>"; };
+		C02EBB0B2C1BA31C00E80ABD /* PersistenciaDatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenciaDatos.swift; sourceTree = "<group>"; };
+		C03F95182C1D0B3A003E84DF /* VistaConDatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaConDatos.swift; sourceTree = "<group>"; };
+		C03F951A2C1D0B82003E84DF /* VistaSeleccionarCiudad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaSeleccionarCiudad.swift; sourceTree = "<group>"; };
+		C03F951C2C1D0BF8003E84DF /* VistaVacia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaVacia.swift; sourceTree = "<group>"; };
+		C09F6D762BF922EB00AD4D50 /* ModeloCiudad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloCiudad.swift; sourceTree = "<group>"; };
+		C0B5641F2C1B715800524A7B /* Colores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colores.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C00191342BD579D2008662E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0E702CB2BFE758A003D25E5 /* OpenMeteoSdk in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C001912E2BD579D2008662E6 = {
+			isa = PBXGroup;
+			children = (
+				C00191392BD579D2008662E6 /* Aplicacion_Tiempo */,
+				C00191382BD579D2008662E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C00191382BD579D2008662E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C00191372BD579D2008662E6 /* Aplicacion_Tiempo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C00191392BD579D2008662E6 /* Aplicacion_Tiempo */ = {
+			isa = PBXGroup;
+			children = (
+				C017DBC52BD5843300C15E97 /* Aplicacion */,
+				C017DBC42BD583D400C15E97 /* Modelo */,
+				C017DBC32BD583C700C15E97 /* Interfaz */,
+				C001913E2BD579D7008662E6 /* Assets.xcassets */,
+				C00191402BD579D7008662E6 /* Preview Content */,
+			);
+			path = Aplicacion_Tiempo;
+			sourceTree = "<group>";
+		};
+		C00191402BD579D7008662E6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C00191412BD579D7008662E6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C017DBC32BD583C700C15E97 /* Interfaz */ = {
+			isa = PBXGroup;
+			children = (
+				C017DBBD2BD57ED800C15E97 /* VistaPrincipal.swift */,
+				C017DBC62BD588DE00C15E97 /* VistaCiudad.swift */,
+				C0B5641F2C1B715800524A7B /* Colores.swift */,
+				C03F95182C1D0B3A003E84DF /* VistaConDatos.swift */,
+				C03F951A2C1D0B82003E84DF /* VistaSeleccionarCiudad.swift */,
+				C03F951C2C1D0BF8003E84DF /* VistaVacia.swift */,
+			);
+			path = Interfaz;
+			sourceTree = "<group>";
+		};
+		C017DBC42BD583D400C15E97 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				C017DBBF2BD57FD300C15E97 /* ModeloTiempo.swift */,
+				C09F6D762BF922EB00AD4D50 /* ModeloCiudad.swift */,
+				C02EBB0B2C1BA31C00E80ABD /* PersistenciaDatos.swift */,
+			);
+			path = Modelo;
+			sourceTree = "<group>";
+		};
+		C017DBC52BD5843300C15E97 /* Aplicacion */ = {
+			isa = PBXGroup;
+			children = (
+				C001913A2BD579D2008662E6 /* TiempoApp.swift */,
+			);
+			path = Aplicacion;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C00191362BD579D2008662E6 /* Aplicacion_Tiempo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C00191452BD579D7008662E6 /* Build configuration list for PBXNativeTarget "Aplicacion_Tiempo" */;
+			buildPhases = (
+				C00191332BD579D2008662E6 /* Sources */,
+				C00191342BD579D2008662E6 /* Frameworks */,
+				C00191352BD579D2008662E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aplicacion_Tiempo;
+			packageProductDependencies = (
+				C0E702CA2BFE758A003D25E5 /* OpenMeteoSdk */,
+			);
+			productName = Aplicacion_Tiempo;
+			productReference = C00191372BD579D2008662E6 /* Aplicacion_Tiempo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C001912F2BD579D2008662E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					C00191362BD579D2008662E6 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = C00191322BD579D2008662E6 /* Build configuration list for PBXProject "Aplicacion_Tiempo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C001912E2BD579D2008662E6;
+			packageReferences = (
+				C0E702C92BFE758A003D25E5 /* XCRemoteSwiftPackageReference "sdk" */,
+			);
+			productRefGroup = C00191382BD579D2008662E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C00191362BD579D2008662E6 /* Aplicacion_Tiempo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C00191352BD579D2008662E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C00191422BD579D7008662E6 /* Preview Assets.xcassets in Resources */,
+				C001913F2BD579D7008662E6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C00191332BD579D2008662E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C017DBC02BD57FD300C15E97 /* ModeloTiempo.swift in Sources */,
+				C0B564202C1B715800524A7B /* Colores.swift in Sources */,
+				C03F951B2C1D0B82003E84DF /* VistaSeleccionarCiudad.swift in Sources */,
+				C017DBBE2BD57ED800C15E97 /* VistaPrincipal.swift in Sources */,
+				C001913B2BD579D2008662E6 /* TiempoApp.swift in Sources */,
+				C017DBC72BD588DE00C15E97 /* VistaCiudad.swift in Sources */,
+				C03F951D2C1D0BF8003E84DF /* VistaVacia.swift in Sources */,
+				C09F6D772BF922EB00AD4D50 /* ModeloCiudad.swift in Sources */,
+				C03F95192C1D0B3A003E84DF /* VistaConDatos.swift in Sources */,
+				C02EBB0C2C1BA31C00E80ABD /* PersistenciaDatos.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C00191432BD579D7008662E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C00191442BD579D7008662E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C00191462BD579D7008662E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Aplicacion_Tiempo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iessanmamede.Aplicacion-Tiempo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C00191472BD579D7008662E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Aplicacion_Tiempo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iessanmamede.Aplicacion-Tiempo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C00191322BD579D2008662E6 /* Build configuration list for PBXProject "Aplicacion_Tiempo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C00191432BD579D7008662E6 /* Debug */,
+				C00191442BD579D7008662E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C00191452BD579D7008662E6 /* Build configuration list for PBXNativeTarget "Aplicacion_Tiempo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C00191462BD579D7008662E6 /* Debug */,
+				C00191472BD579D7008662E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C0E702C92BFE758A003D25E5 /* XCRemoteSwiftPackageReference "sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/open-meteo/sdk.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C0E702CA2BFE758A003D25E5 /* OpenMeteoSdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0E702C92BFE758A003D25E5 /* XCRemoteSwiftPackageReference "sdk" */;
+			productName = OpenMeteoSdk;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C001912F2BD579D2008662E6 /* Project object */;
+}
